@@ -37,4 +37,9 @@ public class GlobalExceptionHandler {
         CommonResponse response = new CommonResponse(message);
         return ResponseEntity.badRequest().body(response);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<CommonResponse> handle(Exception ex) {
+        return ResponseEntity.badRequest().body(new CommonResponse("请求异常，请检查后重试"));
+    }
 }
